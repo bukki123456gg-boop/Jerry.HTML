@@ -3,44 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ข้อมูลส่วนตัว - เจอรี่</title>
+    <title>ข้อมูลส่วนตัว - ธีรภพ ทรัพย์สิริเลิศ (เจอรี่)</title>
+    <style>
+        /* Modern Reset & Basic Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Navbar with Hamburger */
+        .navbar {
+            background-color: #1e293b;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .nav-brand {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        .nav-menu a {
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3rem;
+        }
+        .nav-menu a:hover {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+        }
+        /* รูป Display แบบวงกลม */
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin-bottom: 1rem;
+        }
+        /* ชื่อ-นามสกุลแบบ h1 */
+        h1 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .bio-intro {
+            max-width: 600px;
+            margin: 1rem auto 0;
+            color: #475569;
+        }
+
+        /* Container & Section Formatting */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        section {
+            padding: 2rem 0;
+            scroll-margin-top: 70px; /* Offset สำหรับ Smooth Scroll หลบ Navbar */
+        }
+        section h2 {
+            font-size: 1.8rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #38bdf8;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        /* Grid System (Desktop: 4 Columns, Tablet: 2 Columns, Mobile: 1 Column) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Desktop 4 แถว/คอลัมน์ */
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-top: 4px solid #0066cc;
+        }
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        /* Styled List */
+        ol.contact-list {
+            padding-left: 1.5rem;
+        }
+        ol.contact-list li {
+            margin-bottom: 0.8rem;
+        }
+        .email-at-img {
+            height: 1rem;
+            vertical-align: middle;
+            margin: 0 2px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            /* Tablet Layout: 2 Columns */
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            /* Hamburger Menu Toggle for Mobile */
+            .hamburger {
+                display: flex;
+            }
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1e293b;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+            }
+            .nav-menu.active {
+                max-height: 300px;
+            }
+
+            /* Mobile Layout: 1 Column */
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body style="font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6;">
+<body>
 
-    <header>
-        <h1>ข้อมูลส่วนตัว</h1>
-        
-        <!-- รูปโปรไฟล์ -->
-        <div style="margin-bottom: 20px;">
-            <img src="gghh.jpg" alt="รูปโปรไฟล์" width="150" height="150" style="border-radius: 50%; object-fit: cover;">
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Jerry Portfolio</div>
+            <div class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <p><b>ชื่อ-นามสกุล:</b> ธีรภพ ทรัพย์สิริเลิศ</p>
-        <p><b>ชื่อเล่น:</b> เจอรี่</p>
-        <p><b>สาขาวิชา:</b> DIT วิทยาการคอมพิวเตอร์ (Computer Science)</p>
-        <p><b>กลุ่มเรียน 68 (Section):</b> 01</p>
+    <!-- Header Section -->
+    <header>
+        <!-- รูป Display แบบวงกลม -->
+        <img src="gghh.jpg" alt="รูปโปรไฟล์" class="profile-img">
+        
+        <!-- ชื่อ-นามสกุลแบบ h1 -->
+        <h1>ธีรภพ ทรัพย์สิริเลิศ (เจอรี่)</h1>
+        
+        <!-- สาขาวิชาเป็น em -->
+        <p>สาขาวิชา: <em>DIT วิทยาการคอมพิวเตอร์ (Computer Science)</em> | กลุ่มเรียน 68 (Section 01)</p>
+        <p>คณะวิศวกรรมศาสตร์และเทคโนโลยี</p>
+        
+        <!-- ลิ้งค์ไปยังสถาบัน -->
+        <p>สถาบันการจัดการปัญญาภิวัฒน์ (<a href="http://pim.ac.th" target="_blank" rel="noopener noreferrer">http://pim.ac.th</a>)</p>
+
+        <!-- ประวัติโดยย่อ -->
+        <p class="bio-intro">
+            สวัสดีครับ! ผมมีความสนใจและมุ่งมั่นในการพัฒนาเว็บแอปพลิเคชันอย่างครบวงจร (Full Stack Web Development) ชอบเรียนรู้เทคโนโลยีใหม่ ๆ และนำไอเดียมาสร้างสรรค์เป็นผลิตภัณฑ์ที่ใช้งานได้จริง
+        </p>
     </header>
 
-    <hr style="margin: 30px 0;">
+    <div class="container">
 
-    <section>
-        <h2>เหตุผลที่อยากเรียน Full Stack Web Development</h2>
-        <p>
-            เหตุผลที่ผมสนใจเรียน Full Stack Web Development เพราะต้องการเข้าใจกระบวนการสร้างเว็บไซต์และเว็บแอปพลิเคชันอย่างครบวงจร 
-            ตั้งแต่การออกแบบหน้าตาที่ผู้ใช้เห็น (Frontend) ไปจนถึงการจัดการระบบหลังบ้านและฐานข้อมูล (Backend) 
-            การมีความรู้ทั้งสองส่วนนี้จะช่วยให้ฉันสามารถเปลี่ยนไอเดียให้กลายเป็นผลิตภัณฑ์ที่ใช้งานได้จริง 
-            และเพิ่มโอกาสในการทำงานในสายงานเทคโนโลยีที่มีการเติบโตอย่างรวดเร็ว
-        </p>
-    </section>
+        <!-- Section 1: About Me -->
+        <section id="about">
+            <h2>เกี่ยวกับตัวฉัน (About Me)</h2>
+            <p>
+                เหตุผลที่สนใจเรียน Full Stack Web Development เพราะต้องการเข้าใจกระบวนการสร้างเว็บไซต์และเว็บแอปพลิเคชันอย่างครบวงจร 
+                ตั้งแต่การออกแบบหน้าตาที่ผู้ใช้เห็น (Frontend) ไปจนถึงการจัดการระบบหลังบ้านและฐานข้อมูล (Backend)
+            </p>
+            
+            <!-- Grid Showcase (Desktop: 4 แถว, Tablet: 2 แถว, Mobile: 1 แถว) -->
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Frontend Development</h3>
+                    <p>มุ่งเน้นการสร้าง User Interface ที่สวยงาม สบายตา และรองรับการใช้งานบนทุกอุปกรณ์</p>
+                </div>
+                <div class="card">
+                    <h3>Backend Architecture</h3>
+                    <p>ศึกษาการออกแบบ RESTful API และการจัดการฐานข้อมูลที่มีประสิทธิภาพและปลอดภัย</p>
+                </div>
+                <div class="card">
+                    <h3>Best Practices</h3>
+                    <p>เรียนรู้มาตรฐานการเขียนโค้ด การทำ Clean Code และการใช้ Framework สมัยใหม่</p>
+                </div>
+                <div class="card">
+                    <h3>Continuous Learning</h3>
+                    <p>พร้อมเรียนรู้เครื่องมือใหม่ ๆ ในสายงานเทคโนโลยีที่มีการเปลี่ยนแปลงอย่างรวดเร็วเสมอ</p>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>ความคาดหวังต่อวิชานี้</h2>
-        <p>
-            ผมคาดหวังว่าจะได้เรียนรู้แนวปฏิบัติที่ดี (Best Practices) ในการเขียนโค้ด การใช้ Framework ที่เป็นที่นิยมในปัจจุบัน 
-            และได้ลงมือทำโปรเจกต์จริงเพื่อฝึกทักษะการแก้ปัญหา นอกจากนี้ยังหวังว่าจะเข้าใจวิธีการทำงานร่วมกันระหว่าง 
-            Frontend และ Backend อย่างมีประสิทธิภาพ เพื่อนำไปต่อยอดในการทำงานร่วมกับผู้อื่นในอนาคต
-        </p>
-    </section>
+        <!-- การใช้เส้นแบ่งย่อหน้า -->
+        <hr>
 
+        <!-- Section 2: Education -->
+        <section id="education">
+            <h2>การศึกษา (Education)</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>ระดับปริญญาตรี</h3>
+                    <p>สาขาวิชาวิทยาการคอมพิวเตอร์ (CS)</p>
+                    <p>คณะวิศวกรรมศาสตร์และเทคโนโลยี</p>
+                    <p><a href="http://pim.ac.th" target="_blank">สถาบันการจัดการปัญญาภิวัฒน์</a></p>
+                </div>
+                <div class="card">
+                    <h3>ความคาดหวัง</h3>
+                    <p>เข้าใจการทำงานร่วมกันระหว่าง Frontend และ Backend อย่างมีประสิทธิภาพเพื่อประยุกต์ใช้ในการทำงานจริง</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Section 3: Skills -->
+        <section id="skills">
+            <h2>ทักษะ (Skills)</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>HTML5 & CSS3</h3>
+                    <p>การจัดโครงสร้างเว็บ การทำ Responsive Design และ CSS Grid/Flexbox</p>
+                </div>
+                <div class="card">
+                    <h3>JavaScript</h3>
+                    <p>การจัดการ DOM Events และการเขียนสคริปต์โต้ตอบฝั่ง Client</p>
+                </div>
+                <div class="card">
+                    <h3>Git & GitHub</h3>
+                    <p>การควบคุมเวอร์ชันโค้ดและการใช้งาน GitHub Pages เพื่อแสดงผลงาน</p>
+                </div>
+                <div class="card">
+                    <h3>Database Basic</h3>
+                    <p>พื้นฐานการออกแบบและจัดการฐานข้อมูลสำหรับ Web Application</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Section 4: Contact -->
+        <section id="contact">
+            <h2>การติดต่อ (Contact)</h2>
+            <p style="margin-bottom: 1rem;">ช่องทางการติดต่อกลับและข้อมูลจำลองเพื่อความปลอดภัย:</p>
+            
+            <!-- Ordered List (ol) -->
+            <ol class="contact-list">
+                <li>
+                    <strong>อีเมล์:</strong> 
+                    teeraphop.sup<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACNSURBVHgB3ZFRDsAgCEQ9mtAje1I3m6A4CAn3s/0wtLw2AMBxH3S/B8m5S4CIsg2xS49mAt18QO9C7I2v9wE/k8sU2e0P0G34vS/gXoDdWw98L2D15wIsA1sCtm4+sN3f+oB5s73f1R7w2x2u91/eD+wBawLuL/f+893sAb8D1s0L3gP2b3wAeS4j7L40BwkAAAAASUVORK5CYR4=" alt="@" class="email-at-img">pim.ac.th 
+                    <small>(ใช้ภาพแทนเครื่องหมาย @ เพื่อป้องกันสแปม)</small>
+                </li>
+                <li><strong>เบอร์โทรศัพท์:</strong> 08X-XXX-9999 (เบอร์โทรศัพท์จำลอง)</li>
+                <li><strong>ที่อยู่:</strong> 85/1 หมู่ 2 ถ.แจ้งวัฒนะ ต.ปากเกร็ด อ.ปากเกร็ด นนทบุรี 11120 (ที่อยู่จำลองสถาบันฯ)</li>
+                <li><strong>GitHub Repository:</strong> <a href="https://github.com/bukki123456gg-boop/Jerry.HTML" target="_blank">bukki123456gg-boop/Jerry.HTML</a></li>
+            </ol>
+        </section>
+
+    </div>
+
+    <!-- Script สำหรับ Navbar Hamburger Toggle และ Anchor Smooth Scrolling -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        // Toggle Navbar on Mobile
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close Navbar when clicking any link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
