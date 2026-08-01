@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลส่วนตัว - ธีรภพ ทรัพย์สิริเลิศ (เจอรี่)</title>
     <style>
-        /* Modern Reset & Basic Styling */
+        /* Modern Reset & Dark/Green Theme Base */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,25 +14,34 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #e2e8f0;
+            background-color: #0f172a; /* โทนดำพื้นหลังหลัก */
         }
         a {
-            color: #0066cc;
+            color: #10b981; /* สีเขียว Accent */
             text-decoration: none;
+            transition: color 0.2s;
         }
         a:hover {
+            color: #34d399;
             text-decoration: underline;
         }
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, rgba(16, 185, 129, 0), rgba(16, 185, 129, 0.4), rgba(16, 185, 129, 0));
+            margin: 2rem 0;
+        }
 
-        /* Responsive Navbar with Hamburger */
+        /* Responsive Navbar */
         .navbar {
-            background-color: #1e293b;
+            background-color: #060e1a; /* สีดำเข้ม */
             color: #fff;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #1e293b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
         .nav-container {
             display: flex;
@@ -45,6 +54,7 @@
         .nav-brand {
             font-size: 1.2rem;
             font-weight: bold;
+            color: #10b981;
         }
         .nav-menu {
             display: flex;
@@ -52,12 +62,12 @@
             gap: 1.5rem;
         }
         .nav-menu a {
-            color: #fff;
+            color: #cbd5e1;
             font-weight: 500;
-            transition: color 0.3rem;
+            transition: color 0.3s;
         }
         .nav-menu a:hover {
-            color: #38bdf8;
+            color: #10b981;
             text-decoration: none;
         }
         .hamburger {
@@ -69,7 +79,7 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background-color: #fff;
+            background-color: #10b981;
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -77,8 +87,9 @@
         /* Header Section */
         header {
             text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            padding: 3.5rem 1rem;
+            background: radial-gradient(circle at top, #132e27 0%, #0f172a 70%); /* ดำอมเขียว */
+            border-bottom: 1px solid #1e293b;
         }
         /* รูป Display แบบวงกลม */
         .profile-img {
@@ -86,20 +97,27 @@
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            margin-bottom: 1rem;
+            border: 3px solid #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            margin-bottom: 1.2rem;
         }
         /* ชื่อ-นามสกุลแบบ h1 */
         h1 {
             font-size: 2.2rem;
-            color: #0f172a;
+            color: #f8fafc;
             margin-bottom: 0.5rem;
+        }
+        header p {
+            color: #94a3b8;
         }
         .bio-intro {
             max-width: 600px;
-            margin: 1rem auto 0;
-            color: #475569;
+            margin: 1.2rem auto 0;
+            color: #cbd5e1;
+            background: rgba(16, 185, 129, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
         }
 
         /* Container & Section Formatting */
@@ -109,40 +127,50 @@
             padding: 0 1rem;
         }
         section {
-            padding: 2rem 0;
-            scroll-margin-top: 70px; /* Offset สำหรับ Smooth Scroll หลบ Navbar */
+            padding: 1.5rem 0;
+            scroll-margin-top: 70px;
         }
         section h2 {
             font-size: 1.8rem;
-            color: #1e293b;
+            color: #f8fafc;
             margin-bottom: 1rem;
-            border-bottom: 3px solid #38bdf8;
+            border-bottom: 3px solid #10b981;
             display: inline-block;
             padding-bottom: 0.3rem;
         }
 
-        /* Grid System (Desktop: 4 Columns, Tablet: 2 Columns, Mobile: 1 Column) */
+        /* Grid System (Desktop 4, Tablet 2, Mobile 1) */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Desktop 4 แถว/คอลัมน์ */
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
         .card {
-            background: #fff;
+            background: #1e293b; /* การ์ดสีเทาดำ */
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border-top: 4px solid #0066cc;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-top: 3px solid #10b981;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.15);
         }
         .card h3 {
             margin-bottom: 0.5rem;
-            color: #0f172a;
+            color: #34d399;
+        }
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
         }
 
-        /* Styled List */
+        /* Contact List */
         ol.contact-list {
             padding-left: 1.5rem;
+            color: #cbd5e1;
         }
         ol.contact-list li {
             margin-bottom: 0.8rem;
@@ -151,17 +179,16 @@
             height: 1rem;
             vertical-align: middle;
             margin: 0 2px;
+            filter: invert(1); /* ปรับสีรูปให้อยู่ในธีมมืด */
         }
 
         /* Responsive Breakpoints */
         @media (max-width: 992px) {
-            /* Tablet Layout: 2 Columns */
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
         @media (max-width: 768px) {
-            /* Hamburger Menu Toggle for Mobile */
             .hamburger {
                 display: flex;
             }
@@ -170,7 +197,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: #1e293b;
+                background-color: #060e1a;
                 flex-direction: column;
                 align-items: center;
                 gap: 0;
@@ -188,9 +215,8 @@
             }
             .nav-menu.active {
                 max-height: 300px;
+                border-bottom: 1px solid #10b981;
             }
-
-            /* Mobile Layout: 1 Column */
             .grid-container {
                 grid-template-columns: 1fr;
             }
@@ -243,12 +269,12 @@
         <!-- Section 1: About Me -->
         <section id="about">
             <h2>เกี่ยวกับตัวฉัน (About Me)</h2>
-            <p>
+            <p style="color: #94a3b8; margin-bottom: 1rem;">
                 เหตุผลที่สนใจเรียน Full Stack Web Development เพราะต้องการเข้าใจกระบวนการสร้างเว็บไซต์และเว็บแอปพลิเคชันอย่างครบวงจร 
                 ตั้งแต่การออกแบบหน้าตาที่ผู้ใช้เห็น (Frontend) ไปจนถึงการจัดการระบบหลังบ้านและฐานข้อมูล (Backend)
             </p>
             
-            <!-- Grid Showcase (Desktop: 4 แถว, Tablet: 2 แถว, Mobile: 1 แถว) -->
+            <!-- Responsive Grid (Desktop 4, Tablet 2, Mobile 1) -->
             <div class="grid-container">
                 <div class="card">
                     <h3>Frontend Development</h3>
@@ -269,7 +295,7 @@
             </div>
         </section>
 
-        <!-- การใช้เส้นแบ่งย่อหน้า -->
+        <!-- เส้นแบ่งย่อหน้า -->
         <hr>
 
         <!-- Section 2: Education -->
@@ -319,14 +345,14 @@
         <!-- Section 4: Contact -->
         <section id="contact">
             <h2>การติดต่อ (Contact)</h2>
-            <p style="margin-bottom: 1rem;">ช่องทางการติดต่อกลับและข้อมูลจำลองเพื่อความปลอดภัย:</p>
+            <p style="color: #94a3b8; margin-bottom: 1rem;">ช่องทางการติดต่อกลับและข้อมูลจำลองเพื่อความปลอดภัย:</p>
             
             <!-- Ordered List (ol) -->
             <ol class="contact-list">
                 <li>
                     <strong>อีเมล์:</strong> 
                     teeraphop.sup<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACNSURBVHgB3ZFRDsAgCEQ9mtAje1I3m6A4CAn3s/0wtLw2AMBxH3S/B8m5S4CIsg2xS49mAt18QO9C7I2v9wE/k8sU2e0P0G34vS/gXoDdWw98L2D15wIsA1sCtm4+sN3f+oB5s73f1R7w2x2u91/eD+wBawLuL/f+893sAb8D1s0L3gP2b3wAeS4j7L40BwkAAAAASUVORK5CYR4=" alt="@" class="email-at-img">pim.ac.th 
-                    <small>(ใช้ภาพแทนเครื่องหมาย @ เพื่อป้องกันสแปม)</small>
+                    <small style="color: #64748b;">(ใช้ภาพแทนเครื่องหมาย @ เพื่อป้องกันสแปม)</small>
                 </li>
                 <li><strong>เบอร์โทรศัพท์:</strong> 08X-XXX-9999 (เบอร์โทรศัพท์จำลอง)</li>
                 <li><strong>ที่อยู่:</strong> 85/1 หมู่ 2 ถ.แจ้งวัฒนะ ต.ปากเกร็ด อ.ปากเกร็ด นนทบุรี 11120 (ที่อยู่จำลองสถาบันฯ)</li>
@@ -336,7 +362,7 @@
 
     </div>
 
-    <!-- Script สำหรับ Navbar Hamburger Toggle และ Anchor Smooth Scrolling -->
+    <!-- Script สำหรับ Responsive Navigation & Toggle -->
     <script>
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
